@@ -101,3 +101,6 @@
     top: 0;
   }
 
+.card-body table tr:hover{
+    cursor: pointer;
+}
