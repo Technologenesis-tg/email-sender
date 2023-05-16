@@ -54,11 +54,36 @@
                                     <textarea class="textarea_editor form-control" rows="15" placeholder="Enter text ..."></textarea>
                                 </div>
                                 <h4><i class="ti-link"></i> Attachment</h4>
-                                <form action="#" class="dropzone">
+                                <!-- <form action="#" class="dropzone">
                                     <div class="fallback">
                                         <input name="file" type="file" multiple />
                                     </div>
-                                </form>
+                                </form> -->
+                                <div class="drop-container" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+                                    <p>Drag and drop files here or click to select files</p>
+                                    <input type="file" (change)="onFileSelected($event)" multiple >
+                                    <div *ngIf="selectedFiles.length > 0">
+                                      <div *ngFor="let file of selectedFiles; let i = index" class="file-preview">
+                                        <div class="preview-container">
+                                          <img [src]="getPreviewURL(file)" alt="File Preview" class="preview-image">
+                                          <div class="overlay">
+                                            <div *ngIf="file.type.startsWith('application/msword')" class="icon">
+                                              <i class="fas fa-file-word"></i>
+                                            </div>
+                                            <div *ngIf="file.type === 'application/zip'" class="icon">
+                                              <i class="fas fa-file-archive"></i>
+                                            </div>
+                                          </div>
+                                          <span *ngIf="!file.type.startsWith('image/') && file.type !== 'application/msword' && file.type !== 'application/zip'">{{ file.name }}</span>
+                                          <button class="close-icon" (click)="removeFile(i)">x</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                  
+                                  
+                                  
                                 <button type="submit" class="btn btn-success mt-2"><i class="fa fa-envelope"></i> Send</button>
                                 <button class="btn btn-inverse mx-2 mt-2" (click)="screen = 'inbox'"><i class="fa fa-times"></i> Discard</button>
                             </div>

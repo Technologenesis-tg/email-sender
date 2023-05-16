@@ -7,13 +7,15 @@ import { SidebarComponent } from './componets/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './componets/header/header.component';
 import { EmailsComponent } from './componets/emails/emails.component';
+import { CompanyComponent } from './componets/company/company.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     HeaderComponent,
-    EmailsComponent
+    EmailsComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,
