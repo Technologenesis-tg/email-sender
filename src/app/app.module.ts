@@ -8,7 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './componets/header/header.component';
 import { EmailsComponent } from './componets/emails/emails.component';
 import { CompanyComponent } from './componets/company/company.component';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,9 @@ import { CompanyComponent } from './componets/company/company.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
     NgbModule
   ],
   providers: [],

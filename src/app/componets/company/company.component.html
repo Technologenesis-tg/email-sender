@@ -20,10 +20,79 @@
         <!-- ============================================================== -->
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
+                <div class="card p-2">
                     <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="m-0">Add Company</h3>
+                                        <button class="add_button" *ngIf="screen != 'add-from-excel'" (click)="screen = 'add-from-excel'">
+                                            <i class="fa fa-table-columns"></i>
+                                            Add from Excel
+                                        </button>
+                                        <button class="add_button"  *ngIf="screen == 'add-from-excel'" (click)="screen = 'add-company'">
+                                            <i class="fa fa-table-columns"></i>
+                                            Add Company
+                                        </button>
+                              
+                            </div>
+                            <div class="excel mt-3" *ngIf="screen == 'add-from-excel'">
+                                <div class="dropzone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+                                    <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept=".xls, .xlsx">
+                                    <div *ngIf="!selectedFile" class="file-upload-text" (click)="fileInput.click()">Browse or drag your file</div>
+                                    <div *ngIf="selectedFile" class="file-name">{{ selectedFile.name }}</div>
+                                </div>
+                                <button class="btn btn-success my-2" (click)="onProcessData()" [disabled]="!selectedFile">Process Data</button>
+                                <button class="btn btn-danger m-2" (click)="onClear()">Clear</button>
+                             <div class="table_wrap" *ngIf="jsonData.length > 0">
+                                <table class="table" >
+                                    <thead>
+                                      <tr>
+                                        <th *ngFor="let header of jsonData[0]">{{ header }}</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let row of jsonData.slice(1)">
+                                        <td *ngFor="let cell of row">{{ cell }}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                             </div>
+                                  <div class="btn btn-success" (click)=" openModal()" *ngIf="jsonData.length > 0">Send Data</div>
+                            </div>
+                            <div class="row align-items-center" *ngIf="screen != 'add-from-excel'">
+                                <div class="col-md-6 mb-3">
+                                    <label>Company Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter Company Name">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Company Email</label>
+                                    <input type="email" class="form-control" placeholder="Enter Company Email">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Company Number</label>
+                                    <input type="tel" class="form-control" placeholder="Enter Company Number">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Company City</label>
+                                    <input type="text" class="form-control" placeholder="Enter Company City">
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn btn-success">Add</button>
+                                </div>
+                               
+                            </div>
+                            <table class="table mt-3" *ngIf="screen != 'add-from-excel'">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>City</th>
+                                </tr>
+                            </table>
                         
-                        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -38,3 +107,29 @@
     <!-- ============================================================== -->
     <!-- ============================================================== -->
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Select Category</h4>
+      <button type="button" class="btn close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select id="category" class="form-control" [(ngModel)]="selectedCategory" name="category">
+            <option value="Company">Company</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Small-business">Small-business</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+      <button type="button" class="btn btn-primary" (click)="submitForm()">Submit</button>
+    </div>
+  </ng-template>
+  
