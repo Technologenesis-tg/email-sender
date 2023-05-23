@@ -10,13 +10,15 @@ import { EmailsComponent } from './componets/emails/emails.component';
 import { CompanyComponent } from './componets/company/company.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EditorComponent } from './editor/editor.component';
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     HeaderComponent,
     EmailsComponent,
-    CompanyComponent
+    CompanyComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,

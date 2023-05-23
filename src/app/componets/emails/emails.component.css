@@ -6,22 +6,22 @@
     position: relative;
     background-color: #f8f8f8;
   }
-  
+
   .drop-container p {
     font-size: 16px;
     color: #666;
     margin-bottom: 10px;
   }
-  
+
   .drop-container:hover {
     border-color: #999;
   }
-  
+
   .file-preview {
     display: inline-block;
     margin: 10px;
   }
-  
+
   .preview-container {
     position: relative;
     width: 120px;
@@ -30,13 +30,13 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   .preview-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  
+
   .overlay {
     position: absolute;
     top: 0;
@@ -50,22 +50,22 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   .preview-container:hover .overlay {
     opacity: 1;
   }
-  
+
   .icon {
     color: #fff;
     font-size: 36px;
   }
-  
+
   .file-name {
     color: #fff;
     font-size: 12px;
     margin-top: 5px;
   }
-  
+
   .close-icon {
     position: absolute;
     top: 5px;
@@ -85,13 +85,13 @@
     justify-content: center;
     border-radius: 100%;
   }
-  
+
   .close-icon:hover {
     color: #ff3333;
     background-color: #fff;
   }
-  
-  
+
+
   .drop-container input{
     opacity: 0;
     position: absolute;
@@ -103,4 +103,8 @@
 
 .card-body table tr:hover{
     cursor: pointer;
+}
+.email-card{
+  height: 500px;
+overflow: auto;
 }

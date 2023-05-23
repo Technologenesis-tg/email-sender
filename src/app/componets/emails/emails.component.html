@@ -6,7 +6,7 @@
         <div class="col-md-5 align-self-center">
             <h3 class="text-themecolor">Mailbox</h3>
         </div>
-       
+
     </div>
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
@@ -38,7 +38,7 @@
                                         <a href="javascript:void(0)"> <i class='bx bxs-trash' ></i> Trash </a>
                                     </li>
                                 </ul>
-                             
+
                             </div>
                         </div>
                         <div class="col-xlg-10 col-lg-9 col-md-8 bg-light-part b-l" *ngIf="screen == 'compose'">
@@ -80,7 +80,7 @@
                                       </div>
                                     </div>
                                   </div>
-                                  
+
                                 <button type="submit" class="btn btn-success mt-2"><i class="fa fa-envelope"></i> Send</button>
                                 <button class="btn btn-inverse mx-2 mt-2" (click)="screen = 'inbox'"><i class="fa fa-times"></i> Discard</button>
                             </div>
@@ -88,19 +88,19 @@
                         <div class="col-xlg-10 col-lg-9 col-md-8 bg-light-part b-l " *ngIf="screen == 'inbox'" >
                             <div class="card-body">
                                 <div class="btn-group m-b-10 m-r-10" role="group" aria-label="Button group with nested dropdown">
-    
+
                                     <button type="button " class="btn btn-secondary font-18"><i class="fas fa-redo"></i></button>
                                     <button type="button" class="btn btn-secondary font-18"><i class="bx bx-trash"></i></button>
                                 </div>
-                           
-                             
+
+
                             </div>
                             <div class="card-body p-t-0">
                                 <div class="card b-all shadow-none">
                                     <div class="inbox-center table-responsive">
                                         <table class="table table-hover no-wrap">
                                             <tbody>
-                                                <tr class="unread"  (click)="screen = 'mail-detail'">
+                                                <tr *ngFor="let email of inbox" class="unread"  (click)="get_email(email.id)">
                                                     <td style="width:40px">
                                                         <div class="checkbox">
                                                             <input type="checkbox" id="checkbox0" value="check">
@@ -108,193 +108,12 @@
                                                         </div>
                                                     </td>
                                                     <td style="width:40px" class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Hritik Roshan</td>
-                                                    <td class="max-texts"> <span class="label label-info m-r-10">Work</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</td>
+                                                    <td class="hidden-xs-down"> {{email.senderName}}</td>
+                                                    <td class="max-texts"> {{email.subject || '(No Subject)'}} </td>
                                                     <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
                                                     <td class="text-right"> 12:30 PM </td>
                                                 </tr>
-                                                <tr class="unread"  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox1" value="check">
-                                                            <label for="checkbox1"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-star text-warning"></i></td>
-                                                    <td class="hidden-xs-down">Genelia Roshan</td>
-                                                    <td class="max-texts"><a>Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 13 </td>
-                                                </tr>
-                                                <tr class="unread">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox2" value="check">
-                                                            <label for="checkbox2"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Ritesh Deshmukh</td>
-                                                    <td class="max-texts"><a><span class="label label-success">Elite</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 12 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox3" value="check">
-                                                            <label for="checkbox3"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Akshay Kumar</td>
-                                                    <td class="max-texts"><a><span class="label label-warning">Work</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 12 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox4" value="check">
-                                                            <label for="checkbox4"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Hritik Roshan</td>
-                                                    <td class="max-texts"><a><span class="label label-info m-r-10">Work</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 12 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox5" value="check">
-                                                            <label for="checkbox5"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-star text-warning"></i></td>
-                                                    <td class="hidden-xs-down">Genelia Roshan</td>
-                                                    <td class="max-texts"><a>Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 11 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox6" value="check">
-                                                            <label for="checkbox6"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Ritesh Deshmukh</td>
-                                                    <td class="max-texts"><a><span class="label label-success">Elite</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 11 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox7" value="check">
-                                                            <label for="checkbox7"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Akshay Kumar</td>
-                                                    <td class="max-texts"><a><span class="label label-warning">Work</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 11 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox8" value="check">
-                                                            <label for="checkbox8"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Hritik Roshan</td>
-                                                    <td class="max-texts"><a><span class="label label-info m-r-10">Work</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 10 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox9" value="check">
-                                                            <label for="checkbox9"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-star text-warning"></i></td>
-                                                    <td class="hidden-xs-down">Genelia Roshan</td>
-                                                    <td class="max-texts"><a>Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 10 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox10" value="check">
-                                                            <label for="checkbox10"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Ritesh Deshmukh</td>
-                                                    <td class="max-texts"><a><span class="label label-success">Elite</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 10 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox11" value="check">
-                                                            <label for="checkbox11"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Akshay Kumar</td>
-                                                    <td class="max-texts"><a><span class="label label-warning">Work</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 09 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox m-t-0 m-b-0">
-                                                            <input type="checkbox" id="checkbox12" value="check">
-                                                            <label for="checkbox12"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Hritik Roshan</td>
-                                                    <td class="max-texts"><a><span class="label label-info m-r-10">Work</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 09 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox13" value="check">
-                                                            <label for="checkbox13"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-star text-warning"></i></td>
-                                                    <td class="hidden-xs-down">Genelia Roshan</td>
-                                                    <td class="max-texts"><a>Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 09 </td>
-                                                </tr>
-                                                <tr  (click)="screen = 'mail-detail'">
-                                                    <td>
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="checkbox14" value="check">
-                                                            <label for="checkbox14"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="hidden-xs-down"><i class="far fa-star"></i></td>
-                                                    <td class="hidden-xs-down">Ritesh Deshmukh</td>
-                                                    <td class="max-texts"><a><span class="label label-success">Elite</span> Lorem ipsum perspiciatis unde omnis iste natus error sit voluptatem</a></td>
-                                                    <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
-                                                    <td class="text-right"> May 09 </td>
-                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -305,24 +124,24 @@
                         <div class="card-body p-t-0">
                             <div class="card b-all shadow-none">
                                 <div class="card-body">
-                                    <h3 class="card-title m-b-0">Your message title goes here</h3>
+                                    <h3 class="card-title m-b-0">{{ email_details?.subject}}</h3>
                                 </div>
                                 <div>
                                     <hr class="m-t-0">
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body email-card">
                                     <div class="d-flex m-b-40">
                                         <div>
                                             <a href="javascript:void(0)"><img src="../../../assets/images/1 (1).jpg" alt="user" width="40" class="img-circle"></a>
                                         </div>
                                         <div class="p-l-10">
-                                            <h4 class="m-b-0">Pavan kumar</h4>
-                                            <small class="text-muted">From: jonathan@domain.com</small>
+                                            <h4 class="m-b-0">{{email_details?.senderName}}</h4>
+                                            <small class="text-muted">From: {{email_details?.fromAddress}}</small>
                                         </div>
                                     </div>
-                                    <p><b>Dear USer</b></p>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
-                                    <p>enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,</p>
+                                    <pre>
+                                    {{email_details.text}}
+                                    </pre>
                                 </div>
                                 <div>
                                     <hr class="m-t-0">
@@ -330,15 +149,12 @@
                                 <div class="card-body">
                                     <h4><i class="fa fa-paperclip m-r-10 m-b-10"></i> Attachments <span>(3)</span></h4>
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <a href="#"> <img class="img-thumbnail img-responsive" alt="attachment" src="../../../assets/images/img1.jpg"> </a>
+                                        <div class="col-md-2" *ngFor="let att of email_details.file">
+                                            <a href="#"> <img class="img-thumbnail img-responsive" alt="attachment" src="data:image/jpg;base64,/{{att.content}}"> </a>
+                                            <img src="data:image/jpg;base64,/MD8hPwYJKj9IPz8NAQcCPz8hdjA/IXICAQExDzANBglgP0gBZQMEAgEFADA/Cz8GCSo/SD8/DQEHAT8/Cz8EPws/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQiPg0KPHBsaXN0IHZlcnNpb249IjEuMCI+DQo8ZGljdD4NCiAgPGtleT5QYXlsb2FkQ29udGVudDwva2V5Pg0KICA8YXJyYXk+DQogICAgPGRpY3Q+DQogICAgICA8a2V5PkVtYWlsQWNjb3VudERlc2NyaXB0aW9uPC9rZXk+DQogICAgICA8c3RyaW5nPmJ1c2luZXNzQHRlY2hub2xvZ2VuZXNpcy5jb208L3N0cmluZz4NCiAgICAgIDxrZXk+RW1haWxBY2NvdW50TmFtZTwva2V5Pg0KICAgICAgPHN0cmluZz5idXNpbmVzc0B0ZWNobm9sb2dlbmVzaXMuY29tPC9zdHJpbmc+DQogICAgICA8a2V5PkVtYWlsQWNjb3VudFR5cGU8L2tleT4NCiAgICAgIDxzdHJpbmc+RW1haWxUeXBlSU1BUDwvc3RyaW5nPg0KICAgICAgPGtleT5FbWFpbEFkZHJlc3M8L2tleT4NCiAgICAgIDxzdHJpbmc+YnVzaW5lc3NAdGVjaG5vbG9nZW5lc2lzLmNvbTwvc3RyaW5nPg0KICAgICAgPGtleT5JbmNvbWluZ01haWxTZXJ2ZXJBdXRoZW50aWNhdGlvbjwva2V5Pg0KICAgICAgPHN0cmluZz5FbWFpbEF1dGhQYXNzd29yZDwvc3RyaW5nPg0KICAgICAgPGtleT5JbmNvbWluZ01haWxTZXJ2ZXJIb3N0TmFtZTwva2V5Pg0KICAgICAgPHN0cmluZz5tYWlsLnRlY2hub2xvZ2VuZXNpcy5jb208L3N0cmluZz4NCiAgICAgIDxrZXk+SW5jb21pbmdNYWlsU2VydmVyUG9ydE51bWJlcjwva2V5Pg0KICAgICAgPGludGVnZXI+OTkzPC9pbnRlZ2VyPg0KICAgICAgPGtleT5JbmNvbWluZ01haWxTZXJ2ZXJVc2VTU0w8L2tleT4NCiAgICAgIDx0cnVlLz4NCiAgICAgIDxrZXk+SW5jb21pbmdNYWlsU2VydmVyVXNlcm5hbWU8L2tleT4NCiAgICAgIDxzdHJpbmc+YnVzaW5lc3NAdGVjaG5vbG9nZW5lc2lzLmNvbTwvc3RyaW5nPg0KICAgICAgPGtleT5PdXRnb2luZ01haWxTZXJ2ZXJBdXRoZW50aWNhdGlvbjwva2V5Pg0KICAgICAgPHN0cmluZz5FbWFpbEF1dGhQYXNzd29yZDwvc3RyaW5nPg0KICAgICAgPGtleT5PdXRnb2luZ01haWxTZXJ2ZXJIb3N0TmFtZTwva2V5Pg0KICAgICAgPHN0cmluZz5tYWlsLnRlY2hub2xvZ2VuZXNpcy5jb208L3N0cmluZz4NCiAgICAgIDxrZXk+T3V0Z29pbmdNYWlsU2VydmVyUG9ydE51bWJlcjwva2V5Pg0KICAgICAgPGludGVnZXI+NDY1PC9pbnRlZ2VyPg0KICAgICAgPGtleT5PdXRnb2luZ01haWxTZXJ2ZXJVc2VTU0w8L2tleT4NCiAgICAgIDx0cnVlLz4NCiAgICAgIDxrZXk+T3V0Z29pbmdNYWlsU2VydmVyVXNlcm5hbWU8L2tleT4NCiAgICAgIDxzdHJpbmc+YnVzaW5lc3NAdGVjaG5vbG9nZW5lc2lzLmNvbTwvc3RyaW5nPg0KICAgICAgPGtleT5PdXRnb2luZ1Bhc3N3b3JkU2FtZUFzSW5jb21pbmdQYXNzd29yZDwva2V5Pg0KICAgICAgPHRydWUvPg0KICAgICAgPGtleT5QYXlsb2FkRGVzY3JpcHRpb248L2tleT4NCiAgICAgIDxzdHJpbmc+YnVzaW5lc3NAdGVjaG5vbG9nZW5lc2lzLmNvbSBTZWN1cmUgRW1haWwgU2V0dXA8L3N0cmluZz4NCiAgICAgIDxrZXk+UGF5bG9hZERpc3BsYXlOYW1lPC9rZXk+DQogICAgICA8c3RyaW5nPmJ1c2luZXNzQHRlY2hub2xvZ2VuZXNpcy5jb20gU2VjdXJlIEVtYWlsIFNldHVwPC9zdHJpbmc+DQogICAgICA8a2V5PlBheWxvYWRJZGVudGlmaWVyPC9rZXk+DQogICAgICA8c3RyaW5nPmNwYW5lbC5tYWlsLm9yZy5idXNpbmVzcy50ZWNobm9sb2dlbmVzaXMuY29tPC9zdHJpbmc+DQogICAgICA8a2V5PlBheWxvYWRPcmdhbml6YXRpb248L2tleT4NCiAgICAgIDxzdHJpbmc+dGVjaG5vbG9nZW5lc2lzLmNvbTwvc3RyaW5nPg0KICAgICAgPGtleT5QYXlsb2FkVHlwZTwva2V5Pg0KICAgICAgPHN0cmluZz5jb20uYXBwbGUubWFpbC5tYW5hZ2VkPC9zdHJpbmc+DQogICAgICA8a2V5PlBheWxvYWRVVUlEPC9rZXk+DQogICAgICA8c3RyaW5nPjRiODIyYTNhLWRiMTAtZWM3NS0wMDA0LTMxYzRiMDQ1ZGNjNTwvc3RyaW5nPg0KICAgICAgPGtleT5QYXlsb2FkVmVyc2lvbjwva2V5Pg0KICAgICAgPGludGVnZXI+MTwvaW50ZWdlcj4NCiAgICAgIDxrZXk+UHJldmVudEFwcFNoZWV0PC9rZXk+DQogICAgICA8ZmFsc2UvPg0KICAgICAgPGtleT5QcmV2ZW50TW92ZTwva2V5Pg0KICAgICAgPGZhbHNlLz4NCiAgICAgIDxrZXk+U01JTUVFbmFibGVkPC9rZXk+DQogICAgICA8ZmFsc2UvPg0KICAgICAgPGtleT5JbmNvbWluZ01haWxTZXJ2ZXJJTUFQUGF0aFByZWZpeDwva2V5Pg0KICAgICAgPHN0cmluZz5JTkJPWDwvc3RyaW5nPg0KICAgIDwvZGljdD4NCiAgPC9hcnJheT4NCiAgPGtleT5QYXlsb2FkRGVzY3JpcHRpb248L2tleT4NCiAgPHN0cmluZz5idXNpbmVzc0B0ZWNobm9sb2dlbmVzaXMuY29tIFNlY3VyZSBFbWFpbCBTZXR1cDwvc3RyaW5nPg0KICA8a2V5PlBheWxvYWREaXNwbGF5TmFtZTwva2V5Pg0KICA8c3RyaW5nPmJ1c2luZXNzQHRlY2hub2xvZ2VuZXNpcy5jb20gU2VjdXJlIEVtYWlsIFNldHVwPC9zdHJpbmc+DQogIDxrZXk+UGF5bG9hZElkZW50aWZpZXI8L2tleT4NCiAgPHN0cmluZz5jcGFuZWwubWFpbC5vcmcuYnVzaW5lc3MudGV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" alt="Image">
+
                                         </div>
-                                        <div class="col-md-2">
-                                            <a href="#"> <img class="img-thumbnail img-responsive" alt="attachment" src="../../../assets/images/img2.jpg"> </a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a href="#"> <img class="img-thumbnail img-responsive" alt="attachment" src="../../../assets/images/img3.jpg"> </a>
-                                        </div>
+
                                     </div>
                                     <div class="b-all m-t-20 p-20">
                                         <p class="p-b-20">click here to <a href="#">Reply</a> or <a href="#">Forward</a></p>
@@ -354,10 +170,16 @@
         <!-- ============================================================== -->
         <!-- End PAge Content -->
         <!-- ============================================================== -->
-     
+
     </div>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
 </div>
+
+
+<app-editor></app-editor>
+
+
+

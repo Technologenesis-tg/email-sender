@@ -51,7 +51,7 @@ export class CompanyComponent {
           const worksheetName = workbook.SheetNames[0];
           const worksheet = workbook.Sheets[worksheetName];
           this.jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-  
+
           // Map the data to the required format for the API
           this.mappedData = this.jsonData
             .slice(1)
@@ -63,22 +63,22 @@ export class CompanyComponent {
               phone_number: row[5] || ''
             }))
             .filter((row) => Object.values(row).some((cell) => !!cell));
-  
+
           console.log('Processed data:', this.mappedData);
         }
       };
       fileReader.readAsBinaryString(this.selectedFile);
     }
   }
-  
-  
+
+
 
 
   onSaveAsJson() {
     const blob = new Blob([JSON.stringify(this.jsonData)], { type: 'application/json' });
     saveAs(blob, 'excelData.json');
   }
-    
+
   onClear() {
     this.selectedFile = null;
     this.jsonData = [];
@@ -88,7 +88,7 @@ export class CompanyComponent {
 
   onSend(){
     let data;
-    this.request.post('company/add' , data ,true).subscribe((res:any)=>{
+    this.request.post('company/add' , data ).subscribe((res:any)=>{
       console.log(res)
     })
   }

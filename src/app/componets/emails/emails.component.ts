@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RequestService } from 'src/app/services/request.service';
 
 @Component({
   selector: 'app-emails',
@@ -8,6 +9,17 @@ import { Component } from '@angular/core';
 export class EmailsComponent {
   screen = 'inbox'
   selectedFiles: File[] = [];
+  inbox:any;
+  email_details :any;
+constructor(private request:RequestService){}
+
+  ngOnInit(): void {
+
+this.request.post('email/inbox',true).subscribe((res:any)=>{
+  this.inbox = res;
+})
+
+  }
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -38,8 +50,14 @@ export class EmailsComponent {
   removeFile(index: number) {
     this.selectedFiles.splice(index, 1);
   }
+get_email(id:any){
+  this.screen = 'mail-detail'
+  this.request.get('email/detail/'+id).subscribe((res:any)=>{
+    this.email_details = res;
+    console.log(this.email_details.text);
+  })
+}
 
-  
 }
 
 
